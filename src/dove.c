@@ -1,12 +1,16 @@
 #include <stdio.h>
-#include <curl/curl.h>
 #include <string.h>
+#include "telegram.h"
+
 
 // char contional : error segmentaion fault
 // https://bytes.com/topic/c/answers/162182-argv-2-comparing-d
  
 int main( int argc, char* argv[] )
 {
+    char* bots_id = "870824884:AAFE4ryWK9mYCpJAfjteJeL4PiCHRmPFwLk";
+    char* chat_id = "-1001722017609";
+
     if ( argc > 1 )
     {
         if ( strcmp(argv[1], "-a") == 0) 
@@ -37,7 +41,9 @@ int main( int argc, char* argv[] )
         {
             // photo operation
             printf("text \n");
-            printf("Text argument is: %s\n", argv[2]);  
+            dove_telegram_text( bots_id, chat_id, argv[2] );
+
+            // printf("Text argument is: %s\n", argv[2]);  
         }
         else if ( strcmp(argv[1], "-v") == 0 ) 
         {

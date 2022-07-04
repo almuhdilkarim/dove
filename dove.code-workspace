@@ -4,5 +4,12 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"type.h": "c",
+			"string.h": "c",
+			"curl.h": "c",
+			"stdio.h": "c"
+		}
+	}
 }
