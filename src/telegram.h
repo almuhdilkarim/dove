@@ -30,7 +30,7 @@ char dove_telegram_sent( char* url )
 }
 
 
-char* dove_text_to_url_encode( char* msg )
+char* dove_url_encode( char* msg )
 {
     CURL *curl = curl_easy_init();
 
@@ -53,7 +53,7 @@ char* dove_text_to_url_encode( char* msg )
 char dove_telegram_text( char* bots_id, char* chat_id, char* message )
 {
     // transform message to url encode format 
-    char* msg = dove_text_to_url_encode(message);
+    char* msg = dove_url_encode(message);
 
     // compose text
     char compose[2024];
