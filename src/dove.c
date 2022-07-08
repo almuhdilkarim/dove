@@ -41,6 +41,7 @@ int main( int argc, char* argv[] )
         {
             // photo operation
             printf("text \n");
+           
             dove_telegram_text( bots_id, chat_id, argv[2] );
 
             // printf("Text argument is: %s\n", argv[2]);  

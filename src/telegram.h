@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <curl/curl.h>
-
+#include "lib/url_encode.h"
 
 
 char dove_telegram_sent( char* url )
@@ -30,38 +30,49 @@ char dove_telegram_sent( char* url )
 }
 
 
-char* dove_url_encode( char* msg )
+char* dove_text_prep( char* raw )
 {
-    CURL *curl = curl_easy_init();
-
-    if (curl)
+    int i=0;
+    
+    while(raw[i]!='\0')
     {
-        int strg_len = strlen( msg );
-        char *output = curl_easy_escape(curl, msg , strg_len);
-
-        if(output) 
-        {
-            msg = output;
-            return msg;
+        // space encode
+        if( raw[i]=='n' && raw[i-1]=='\\' )
+        {       
+            /*
+            raw[i+6]=0; 
+            raw[i+5]=raw[i+4]; 
+            raw[i+4]=raw[i+3]; 
+            raw[i+3]=raw[i+2]; 
+            raw[i+2]=raw[i+1]; 
+            raw[i+1]=' '; 
+            */
+            printf( "%d", i );
         }
-        curl_free(output);
+       
+        i++;
     }
-    curl_easy_cleanup(curl);
+    // return raw;
 }
 
 
-char dove_telegram_text( char* bots_id, char* chat_id, char* message )
+char dove_telegram_text( char* bots_id, char* chat_id, char *message )
 {
-    // transform message to url encode format 
-    char* msg = dove_url_encode(message);
+    // message procesor
+    dove_text_prep(message);
+ 
+
+    // url encode
+    // char* enc = url_encoder(pre);
+    
+    // url sanitize
+    // char* msg = url_escape(enc);
 
     // compose text
-    char compose[2024];
-    snprintf( compose, sizeof(compose), "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s", bots_id, chat_id, msg );
+    // char compose[2024];
+    // snprintf( compose, sizeof(compose), "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s", bots_id, chat_id, enc );
 
     // prepare data before send
-    char* url = compose;
-    dove_telegram_sent(url);
+    // char* url = compose;
+    // dove_telegram_sent(url);
 }
-
-

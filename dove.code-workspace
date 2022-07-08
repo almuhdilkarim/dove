@@ -9,7 +9,12 @@
 			"type.h": "c",
 			"string.h": "c",
 			"curl.h": "c",
-			"stdio.h": "c"
+			"stdio.h": "c",
+			"functional": "c",
+			"system_error": "c",
+			"sstream": "c",
+			"telegram.h": "c",
+			"url_encode.h": "c"
 		}
 	}
 }
