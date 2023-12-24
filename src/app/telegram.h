@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <curl/curl.h>
-#include "lib/url_encode.h"
+#include "url/url_encode.h"
+
+
+char dov_telegram_main() {
+    
+}
 
 
 char dove_telegram_sent( char* url )
@@ -56,6 +61,7 @@ char* dove_text_prep( char* raw )
 }
 
 
+// send text message to telegram boot
 char dove_telegram_text( char* bots_id, char* chat_id, char *message )
 {
     // message procesor
@@ -76,3 +82,16 @@ char dove_telegram_text( char* bots_id, char* chat_id, char *message )
     // char* url = compose;
     // dove_telegram_sent(url);
 }
+
+// send image to telegram boot
+char dove_telegram_image() 
+{
+
+}
+
+// send image to telegram boot
+char dove_telegram_audio()
+{
+
+}
+
